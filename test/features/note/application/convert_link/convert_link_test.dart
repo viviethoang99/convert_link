@@ -28,10 +28,10 @@ void main() {
       blocTest<ConvertLinkCubit, ConvertLinkState>(
         'will emit if an id is passed in',
         setUp: () => when(() => noteRepository.findNote('random-id'))
-            .thenAnswer((_) => _FakeNoteDetail()),
+            .thenReturn(_MockNoteDetail()),
         build: () => convertLinkCubit,
         act: (cubit) => cubit.initLoading('random-id'),
-        verify: (bloc) => expect(bloc.state.originalUrl.isNotEmpty, true),
+        verify: (bloc) => expect(bloc.state.userInput.isNotEmpty, true),
       );
     });
   }));
@@ -39,4 +39,11 @@ void main() {
 
 class _MockNoteRepository extends Mock implements NoteRepository {}
 
-class _FakeNoteDetail extends Fake implements NoteDetail {}
+class _MockNoteDetail extends Mock implements NoteDetail {
+  @override
+  final String id = '1';
+  @override
+  final String content = 'random';
+  @override
+  final DateTime createAt = DateTime.now();
+}

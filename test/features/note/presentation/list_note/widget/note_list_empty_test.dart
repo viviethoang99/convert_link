@@ -33,7 +33,7 @@ void main() {
         routes: <GoRoute>[
           GoRoute(
             path: AppPage.convert.path,
-            name: AppPage.convert.name,
+            name: AppPage.convert.nameRouter,
             pageBuilder: (context, state) => const MaterialPage(
               child: SizedBox.shrink(
                 key: convertScreenKey,
@@ -42,7 +42,7 @@ void main() {
           ),
           GoRoute(
             path: AppPage.listNotes.path,
-            name: AppPage.listNotes.name,
+            name: AppPage.listNotes.nameRouter,
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: const ListNoteEmpty(),
