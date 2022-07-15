@@ -1,30 +1,30 @@
 enum AppPage {
   convert(
     path: '/',
-    name: 'CONVERT_SCREEN',
+    nameRouter: 'CONVERT_SCREEN',
   ),
   listNotes(
     path: '/listNotes',
-    name: 'LIST_NOTES_SCREEN',
+    nameRouter: 'LIST_NOTES_SCREEN',
   ),
   setting(
     path: '/setting',
-    name: 'SETTING_SCREEN',
+    nameRouter: 'SETTING_SCREEN',
   ),
   detail(
     path: 'detail/:fid',
-    name: 'detail',
+    nameRouter: 'detail',
   ),
   error(
     path: '/error',
-    name: 'ERROR_SCREEN',
+    nameRouter: 'ERROR_SCREEN',
   );
 
   const AppPage({
     required this.path,
-    required this.name,
+    required this.nameRouter,
   });
 
   final String path;
-  final String name;
+  final String nameRouter;
 }

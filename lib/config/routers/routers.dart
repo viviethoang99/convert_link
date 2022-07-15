@@ -12,7 +12,7 @@ class AppRouter {
     routes: <GoRoute>[
       GoRoute(
         path: AppPage.convert.path,
-        name: AppPage.convert.name,
+        name: AppPage.convert.nameRouter,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           child: const ConvertLinkScreen(),
@@ -20,7 +20,7 @@ class AppRouter {
       ),
       GoRoute(
         path: AppPage.listNotes.path,
-        name: AppPage.listNotes.name,
+        name: AppPage.listNotes.nameRouter,
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           child: const ListNoteScreen(),
@@ -28,7 +28,7 @@ class AppRouter {
         routes: [
           GoRoute(
             path: AppPage.detail.path,
-            name: AppPage.detail.name,
+            name: AppPage.detail.nameRouter,
             pageBuilder: (context, state) => MaterialPage(
               key: state.pageKey,
               child: ConvertLinkScreen(id: state.params['fid']),

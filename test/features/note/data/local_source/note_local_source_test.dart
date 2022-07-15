@@ -24,7 +24,7 @@ void main() {
       });
     });
 
-       group('deleteAllNotes', () {
+    group('deleteAllNotes', () {
       test('should delete all notes from the $Box', () async {
         when(notesBox.clear).thenAnswer((_) async => 0);
 
@@ -40,7 +40,7 @@ void main() {
         final note = _FakeNoteDetailDto();
         when(() => notesBox.get(id)).thenReturn(note);
 
-        final response =  noteLocalSourceImpl.findNote(id);
+        final response = noteLocalSourceImpl.findNote(id);
 
         expect(response, note);
       });
@@ -90,6 +90,6 @@ void main() {
 
 class _MockNoteBox extends Mock implements Box<NoteDetailDto> {}
 
-class _MockNoteDetailDto extends Mock implements NoteDetailDto{}
+class _MockNoteDetailDto extends Mock implements NoteDetailDto {}
 
-class _FakeNoteDetailDto extends Fake implements NoteDetailDto{}
+class _FakeNoteDetailDto extends Fake implements NoteDetailDto {}
