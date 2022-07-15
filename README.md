@@ -87,7 +87,6 @@ $ genhtml coverage/lcov.info -o coverage/
 $ open coverage/index.html
 ```
 
-
 [coverage_badge]: coverage_badge.svg
 [flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
 [internationalization_link]: https://flutter.dev/docs/development/accessibility-and-localization/internationalization
