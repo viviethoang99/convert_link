@@ -92,7 +92,7 @@ void main() {
           (_) => Future.value(),
         ),
         act: (cubit) => cubit.deleteAllNote(true),
-        expect: () => [], 
+        expect: () => [],
       );
     });
   });

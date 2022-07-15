@@ -36,7 +36,7 @@ class ConvertLinkScreen extends StatelessWidget {
             )
           : null,
       floatingActionButton: const SpeedDialWidget(),
-      body:  BlocProvider(
+      body: BlocProvider(
         create: (_) => getIt<ConvertLinkCubit>()..initLoading(id),
         child: const ConvertLink(),
       ),

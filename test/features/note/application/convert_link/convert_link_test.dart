@@ -4,8 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:uuid/uuid.dart';
 
-part 'convert_link_fixture.dart';
-
 void main() {
   group('$ConvertLinkCubit', (() {
     late ConvertLinkCubit convertLinkCubit;
@@ -30,7 +28,7 @@ void main() {
       blocTest<ConvertLinkCubit, ConvertLinkState>(
         'will emit if an id is passed in',
         setUp: () => when(() => noteRepository.findNote('random-id'))
-            .thenAnswer((_) => _listData.first),
+            .thenAnswer((_) => _FakeNoteDetail()),
         build: () => convertLinkCubit,
         act: (cubit) => cubit.initLoading('random-id'),
         verify: (bloc) => expect(bloc.state.originalUrl.isNotEmpty, true),
@@ -40,3 +38,5 @@ void main() {
 }
 
 class _MockNoteRepository extends Mock implements NoteRepository {}
+
+class _FakeNoteDetail extends Fake implements NoteDetail {}

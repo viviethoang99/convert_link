@@ -61,7 +61,7 @@ class NoteItem extends StatelessWidget {
           vertical: 10,
         ),
         child: ListTile(
-          onTap: () =>  context.goNamed('detail', params: {'fid': item.id}),
+          onTap: () => context.goNamed('detail', params: {'fid': item.id}),
           title: Text(
             item.content.trim().replaceAll('\n', ' '),
             maxLines: 2,
