@@ -1,0 +1,61 @@
+name: convert_link
+description: The simple app gets the link or encodes the link on the comment.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  bloc: ^8.0.3
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.1
+  flutter_localizations:
+    sdk: flutter
+
+  # Misc
+  intl: ^0.17.0
+  uuid: ^3.0.6
+
+  # Value equality
+  equatable: ^2.0.3
+
+  # UI
+  auto_size_text_field: ^2.1.0
+  flutter_speed_dial: ^6.0.0
+
+  # Caching
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Functional programming
+  dartz: ^0.10.1
+
+  # Dependency Injection
+  get_it: ^7.2.0
+  injectable: ^1.5.3
+
+  # Router
+  go_router: ^4.1.0
+
+dev_dependencies:
+  bloc_test: ^9.0.3
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+  flutter_lints: ^2.0.1
+
+  # Code generators
+  hive_generator: ^1.1.2
+  build_runner: ^2.1.7
+  injectable_generator: ^1.5.3
+
+  # Splash screen
+  flutter_native_splash: ^2.2.4
+  # Icon app
+  flutter_launcher_icons: ^0.9.3
+
+flutter:
+  uses-material-design: true
+  generate: true
