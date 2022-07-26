@@ -1,5 +1,4 @@
-// ignore: implementation_imports, depend_on_referenced_packages
-import 'package:collection/src/list_extensions.dart';
+import 'package:collection/collection.dart';
 
 import '../core.dart';
 
@@ -23,12 +22,45 @@ extension StringExtension on String {
     return (length > 0) ? '${this[0].toUpperCase()}${substring(1)}' : this;
   }
 
+  bool get isHTML {
+    final regex = RegExp(r'(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+');
+    return regex.hasMatch(this);
+  }
+
+  int? toIntOrNull({int? radix}) => int.tryParse(this, radix: radix);
+
+  bool get isInt => toIntOrNull() != null;
+}
+
+extension StringNhentaiExtension on String {
+  String get toNhentai => 'nhentai.net/g/$this';
+
+  List<String> getCodeHaiten() {
+    final regExp = RegExp(r'([0-9]{6})');
+    return regExp.allMatches(this).map((s) => s.group(0)!.toString()).toList();
+  }
+
+  bool get isUrlNhentai => contains('nhentai') || (length == 6 && isInt);
+}
+
+extension StringHexExtension on String {
+  List<String> getHexCode() {
+    final exp = RegExp(r'([a-fA-F0-9]{8})\w+');
+
+    final matches = exp.allMatches(this);
+    var listRegex = <String>[];
+    for (var match in matches) {
+      listRegex.add(substring(match.start, match.end));
+    }
+    return listRegex;
+  }
+
   String get asciiToHex {
     var hex = StringBuffer();
     for (var char in codeUnits) {
       hex.write(char.toRadixString(16).padLeft(2, '0'));
     }
-    return hex.toString();
+    return hex.toString().toUpperCase();
   }
 
   String get hexToAscii => List.generate(
@@ -36,25 +68,23 @@ extension StringExtension on String {
         (i) => String.fromCharCode(
             int.parse(substring(i * 2, (i * 2) + 2), radix: 16)),
       ).join();
+}
 
-  bool get isHTML {
-    final regex = RegExp(r'(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+');
-    return regex.hasMatch(this);
-  }
-
-  String get toNhentai => 'nhentai.net/g/$this';
-
+extension StringUrlExtension on String {
   String get addBrackets => addCharacter('(.)');
 
   String get addSpace => addCharacter(' .');
 
   String addCharacter(String char) {
-    final edit = trim()
-        .split('.')
-        .mapIndexed((i, e) => i < 2 ? '$e$char' : '$e.')
+    final listString = trim().split('.');
+    return listString
+        .mapIndexed((index, txt) {
+          if (txt == listString.last) return txt;
+          if (index < 2) return '$txt$char';
+          return '$txt.';
+        })
         .toList()
         .join();
-    return edit.substring(0, edit.length - 1);
   }
 
   List<String> getUrl() {
@@ -69,14 +99,13 @@ extension StringExtension on String {
     }
     return listUrl;
   }
+}
 
-  List<String> getHexCode() {
-    final exp = RegExp(r'([a-fA-F0-9]{8})\w+');
-    final matches = exp.allMatches(this);
-    var listRegex = <String>[];
-    for (var match in matches) {
-      listRegex.add(substring(match.start, match.end));
+extension ListUrlX on List<String> {
+  bool get isUrlsNhentai {
+    for (var url in this) {
+      if (url.isUrlNhentai) return true;
     }
-    return listRegex;
+    return false;
   }
 }

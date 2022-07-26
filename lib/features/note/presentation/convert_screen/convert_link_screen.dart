@@ -12,6 +12,7 @@ part 'widget/list_origina_url_result.dart';
 part 'widget/text_field_input.dart';
 part 'widget/app_bar.dart';
 part 'widget/convert_link.dart';
+part 'widget/list_convert_url.dart';
 
 class ConvertLinkScreen extends StatelessWidget {
   const ConvertLinkScreen({

@@ -33,6 +33,7 @@ class ConvertLinkCubit extends Cubit<ConvertLinkState> {
     emit(ConvertLinkState(userInput: input));
     findUrl(deleteSpecialCharacters(input));
     if (state.originalUrl.isEmpty) findHex(input);
+    if (state.originalUrl.isEmpty) findCode(input);
   }
 
   Future<void> getDataFromClipboard() async {
@@ -59,18 +60,17 @@ class ConvertLinkCubit extends Cubit<ConvertLinkState> {
 
   void findUrl(String text) {
     final listUrl = text.getUrl();
-    emit(ConvertLinkState(
-      originalUrl: listUrl,
-      userInput: state.userInput,
-    ));
+    emit(ConvertLinkState(originalUrl: listUrl, userInput: state.userInput));
   }
 
   void findHex(String text) {
     final listUrl = text.getHexCode().map((hex) => hex.hexToAscii).toList();
-    emit(ConvertLinkState(
-      originalUrl: listUrl,
-      userInput: state.userInput,
-    ));
+    emit(ConvertLinkState(originalUrl: listUrl, userInput: state.userInput));
+  }
+
+  void findCode(String text) {
+    final listUrl = text.getCodeHaiten();
+    emit(ConvertLinkState(originalUrl: listUrl, userInput: state.userInput));
   }
 
   void clearData() {

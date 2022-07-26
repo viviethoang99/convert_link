@@ -34,6 +34,15 @@ void main() {
         verify: (bloc) => expect(bloc.state.userInput.isNotEmpty, true),
       );
     });
+
+    group('clearData', () {
+      blocTest<ConvertLinkCubit, ConvertLinkState>(
+        'should emit new ConvertLinkState',
+        build: () => convertLinkCubit,
+        act: (cubit) => cubit.clearData(),
+        expect: () => [const ConvertLinkState()],
+      );
+    });
   }));
 }
 

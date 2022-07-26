@@ -30,17 +30,7 @@ class ConvertLink extends StatelessWidget {
                       title: 'Đường dẫn mã hoá:',
                     )
                   : const SizedBox.shrink(),
-              const _ListUrlWidget(
-                type: ConvertType.hex,
-              ),
-              const SizedBox(height: 10),
-              const _ListUrlWidget(
-                type: ConvertType.addSpace,
-              ),
-              const SizedBox(height: 10),
-              const _ListUrlWidget(
-                type: ConvertType.addCharacter,
-              ),
+              ListConverUrlWidget(listUrl: state.originalUrl),
               const SizedBox(height: 50),
             ],
           );

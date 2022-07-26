@@ -1,6 +1,6 @@
 name: convert_link
 description: The simple app gets the link or encodes the link on the comment.
-version: 1.0.0+1
+version: 1.0.1
 publish_to: none
 
 environment:
@@ -17,6 +17,7 @@ dependencies:
   # Misc
   intl: ^0.17.0
   uuid: ^3.0.6
+  collection: ^1.16.0
 
   # Value equality
   equatable: ^2.0.3
@@ -37,7 +38,7 @@ dependencies:
   injectable: ^1.5.3
 
   # Router
-  go_router: ^4.1.0
+  go_router: ^4.2.1
 
 dev_dependencies:
   bloc_test: ^9.0.3
